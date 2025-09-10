@@ -23,7 +23,7 @@ namespace Administracion
 
         public override string ToString()
         {
-            return string.Format("ID: {0}" + System.Environment.NewLine + "Nombre: {1}" + System.Environment.NewLine + "Precio: {2}" + System.Environment.NewLine + "Disponible: {3}" + System.Environment.NewLine + "Stock: {4}", Id, Nombre, Precio, Disponible, CantStock);
+            return string.Format("  ID: {0}" + System.Environment.NewLine + "   Nombre: {1}" + System.Environment.NewLine + "   Precio: {2}" + System.Environment.NewLine + "   Disponible: {3}" + System.Environment.NewLine + "   Stock: {4}", Id, Nombre, Precio, Disponible, CantStock);
         }
     }
 }

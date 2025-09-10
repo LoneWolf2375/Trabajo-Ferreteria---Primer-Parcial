@@ -40,3 +40,4 @@ C:\Users\LoneWofl2375\OneDrive\Documents\Kevin Doerksen\2025\Semester 2\Optativo
 C:\Users\LoneWofl2375\OneDrive\Documents\Kevin Doerksen\2025\Semester 2\Optativo 3\Parcial 1 - Trabajo Grupal\Trabajo-Ferreteria---Primer-Parcial\obj\Debug\net9.0\Trabajo de Fereterria - Primer Parcial.pdb
 C:\Users\LoneWofl2375\OneDrive\Documents\Kevin Doerksen\2025\Semester 2\Optativo 3\Parcial 1 - Trabajo Grupal\Trabajo-Ferreteria---Primer-Parcial\obj\Debug\net9.0\Trabajo de Fereterria - Primer Parcial.genruntimeconfig.cache
 C:\Users\LoneWofl2375\OneDrive\Documents\Kevin Doerksen\2025\Semester 2\Optativo 3\Parcial 1 - Trabajo Grupal\Trabajo-Ferreteria---Primer-Parcial\obj\Debug\net9.0\ref\Trabajo de Fereterria - Primer Parcial.dll
+C:\Users\LoneWofl2375\OneDrive\Documents\Kevin Doerksen\2025\Semester 2\Optativo 3\Parcial 1 - Trabajo Grupal\Trabajo-Ferreteria---Primer-Parcial\obj\Debug\net9.0\Trabajo de Fereterria - Primer Parcial.sourcelink.json
