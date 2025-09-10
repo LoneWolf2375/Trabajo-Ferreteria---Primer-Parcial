@@ -129,6 +129,7 @@ namespace Administracion
             {
                 Console.WriteLine(producto);
             }
+            Console.WriteLine();
         }
 
         static Producto ModificarProducto(List<Producto> ListaProductos, Producto findModificar, int opcionCambiar, string nuevoValor) // Not yet done
@@ -241,12 +242,15 @@ namespace Administracion
                 }
                 else
                 {
-                    var find = ListaProductos.FirstOrDefault(x => x.Nombre == search);
+                    var resultados = ListaProductos.Where(x => x.Nombre.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
 
-                    if (find != null)
+                    if (resultados.Count > 0)
                     {
                         Console.WriteLine(System.Environment.NewLine + "Productos encontrados:");
-                        Console.WriteLine(find);
+                        foreach (var producto in resultados)
+                        {
+                            Console.WriteLine(producto);
+                        }
 
                         if (Espeficifo)
                         {
@@ -254,17 +258,14 @@ namespace Administracion
 
                             idSearch = ValidarEntero(1, 999999999, "Debe ser un entero mayor o igual a 1", "");
 
-                            find = ListaProductos.FirstOrDefault(x => x.Id == idSearch);
+                            var elegido = resultados.FirstOrDefault(x => x.Id == idSearch);
 
-                            if (find != null)
-                            {
-                                return find;
-                            }
+                            return elegido;
                         }
                         else
                         {
                             Console.WriteLine();
-                            return find;
+                            return resultados.First();
                         }
                     }
                 }
@@ -294,153 +295,166 @@ namespace Administracion
 
                 int choice = ValidarEntero(0, 6, "Debe ser uno de los opciones disponibles", "");
 
-                if (0 <= choice & choice < 5)
+                Console.WriteLine(System.Environment.NewLine + "Elegiste: " + choice + System.Environment.NewLine);
+
+                switch (choice)
                 {
-                    Console.WriteLine(System.Environment.NewLine + "Elegiste: " + choice + System.Environment.NewLine);
+                    case 0: // Salir del programa
+                        exitMainLoop = true;
 
-                    switch (choice)
-                    {
-                        case 0:
-                            exitMainLoop = true;
+                        break; // Salir del programa
 
-                            break; // Salir del programa
+                    case 1: // Anadir un producto
+                        string nombre = GetName(false);
 
-                        case 1:
-                            string nombre = GetName(false);
+                        int precio = ValidarEntero(1000, 999999999, "Debe ser un entero mayor o igual a 1.000 Gs", "Precio");
 
-                            int precio = ValidarEntero(1000, 999999999, "Debe ser un entero mayor o igual a 1.000 Gs", "Precio");
+                        bool disponible = GetAvailability(false);
 
-                            bool disponible = GetAvailability(false);
+                        bool exitSaveLoop = false;
 
-                            bool exitSaveLoop = false;
+                        while (!exitSaveLoop)
+                        {
+                            Console.WriteLine(System.Environment.NewLine + "Los datos ingresados son:");
+                            Console.WriteLine(" Nombre: " + nombre);
+                            Console.WriteLine(" Precio: " + precio);
+                            Console.WriteLine(" Disponible: " + disponible);
 
-                            while (!exitSaveLoop)
+                            Console.WriteLine(System.Environment.NewLine + "Por favor, confirmar para guardar: ");
+                            bool confirmacionGuardar = ValidarConfirmacion();
+
+                            if (confirmacionGuardar)
                             {
-                                Console.WriteLine(System.Environment.NewLine + "Los datos ingresados son:");
-                                Console.WriteLine(" Nombre: " + nombre);
-                                Console.WriteLine(" Precio: " + precio);
-                                Console.WriteLine(" Disponible: " + disponible);
+                                Producto newProducto = GuardarProducto(nombre, precio, disponible);
 
-                                Console.WriteLine(System.Environment.NewLine + "Por favor, confirmar para guardar: ");
-                                bool confirmacionGuardar = ValidarConfirmacion();
+                                ListaProductos.Add(newProducto);
 
-                                if (confirmacionGuardar)
+                                Console.WriteLine(System.Environment.NewLine + "-Producto guardado con exito-" + System.Environment.NewLine);
+
+                                exitSaveLoop = true;
+
+                            }
+                            else
+                            {
+                                if (!confirmacionGuardar)
                                 {
-                                    Producto newProducto = GuardarProducto(nombre, precio, disponible);
+                                    Console.WriteLine(System.Environment.NewLine + "Elegir una opcion:");
+                                    Console.WriteLine(" 1. Cambiar valor");
+                                    Console.WriteLine(" 2. Cancelar");
 
-                                    ListaProductos.Add(newProducto);
+                                    int opcionNoGuardar = ValidarEntero(1, 2, "Debe ser uno de los opciones disponibles", "");
 
-                                    Console.WriteLine(System.Environment.NewLine + "-Producto guardado con exito-" + System.Environment.NewLine);
-
-                                    exitSaveLoop = true;
-
-                                }
-                                else
-                                {
-                                    if (!confirmacionGuardar)
+                                    switch (opcionNoGuardar)
                                     {
-                                        Console.WriteLine(System.Environment.NewLine + "Elegir una opcion:");
-                                        Console.WriteLine(" 1. Cambiar valor");
-                                        Console.WriteLine(" 2. Cancelar");
+                                        case 1:
+                                            Console.WriteLine(System.Environment.NewLine + "Elegir un valor a cambiar:");
+                                            Console.WriteLine("1. Nombre");
+                                            Console.WriteLine("2. Precio");
+                                            Console.WriteLine("3. Disponibilidad");
 
-                                        int opcionNoGuardar = ValidarEntero(1, 2, "Debe ser uno de los opciones disponibles", "");
-                                        
-                                        switch (opcionNoGuardar)
-                                        {
-                                            case 1:
-                                                Console.WriteLine(System.Environment.NewLine + "Elegir un valor a cambiar:");
-                                                Console.WriteLine("1. Nombre");
-                                                Console.WriteLine("2. Precio");
-                                                Console.WriteLine("3. Disponibilidad");
+                                            int opcionCambiar = ValidarEntero(1, 3, "Debe ser uno de los opciones disponibles", "");
 
-                                                int opcionCambiar = ValidarEntero(1, 3, "Debe ser uno de los opciones disponibles", "");
+                                            switch (opcionCambiar)
+                                            {
+                                                case 1:
+                                                    nombre = (string)ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
+                                                    break;
+                                                case 2:
+                                                    precio = (int)ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
+                                                    break;
+                                                case 3:
+                                                    disponible = (bool)ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
+                                                    break;
+                                            }
 
-                                                switch (opcionCambiar)
-                                                {
-                                                    case 1:
-                                                        nombre = (string)ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
-                                                        break;
-                                                    case 2:
-                                                        precio = (int)ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
-                                                        break;
-                                                    case 3:
-                                                        disponible = (bool)ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
-                                                        break;
-                                                }
+                                            break;
 
-                                                break;
+                                        case 2:
+                                            Console.WriteLine(System.Environment.NewLine + "-Guardado cancelado-" + System.Environment.NewLine);
 
-                                            case 2:
-                                                Console.WriteLine(System.Environment.NewLine + "-Guardado cancelado-" + System.Environment.NewLine);
-
-                                                exitSaveLoop = true;
-                                                break;
-                                        }
+                                            exitSaveLoop = true;
+                                            break;
                                     }
                                 }
                             }
+                        }
 
-                            break; // Anadir un producto
+                        break; // Anadir un producto
 
-                        case 2: // Agregar stock
-                            var find = BuscarProducto(ListaProductos, true);
+                    case 2: // Agregar stock
+                        var find = BuscarProducto(ListaProductos, true);
 
-                            if (find != null)
+                        if (find != null)
+                        {
+                            Console.WriteLine();
+                            int nuevoStock = ValidarEntero(0, 999999999, "Debe ser un entero positivo", "Cantidad a agregar");
+
+                            find.CantStock += nuevoStock;
+
+                            Console.WriteLine(System.Environment.NewLine + "-Stock actualizado con exito-");
+                            Console.WriteLine($"-Stock actual: {find.CantStock}-" + System.Environment.NewLine);
+
+                            if (find.CantStock > 0 & !find.Disponible)
                             {
-                                Console.WriteLine();
-                                int nuevoStock = ValidarEntero(0, 999999999, "Debe ser un entero positivo", "Cantidad a agregar");
+                                Console.WriteLine("El producto no estaba disponible, desea cambiar su estado a disponible?");
+                                bool cambiarEstado = ValidarConfirmacion();
 
-                                find.CantStock += nuevoStock;
-
-                                Console.WriteLine(System.Environment.NewLine + "-Stock actualizado con exito-");
-                                Console.WriteLine($"-Stock actual: {find.CantStock}-" + System.Environment.NewLine);
-                            }
-
-                            break;
-
-                        case 3:
-                            var findModificar = BuscarProducto(ListaProductos, true);
-
-                            if (findModificar != null)
-                            {
-                                Console.WriteLine(System.Environment.NewLine + "Elegir un atributo a cambiar:");
-                                Console.WriteLine(" 1. Nombre");
-                                Console.WriteLine(" 2. Precio");
-                                Console.WriteLine(" 3. Disponibilidad");
-                                Console.WriteLine(" 4. Stock");
-
-                                int opcionCambiarAtributo = ValidarEntero(1, 4, "Debe ser uno de los opciones disponibles", "");
-                                string nuevoValor = "";
-
-                                switch (opcionCambiarAtributo)
+                                if (cambiarEstado)
                                 {
-                                    case 1: // Cambiar nombre
-                                        nuevoValor = (string)ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo);
-                                        break;
-                                    case 2: // Cambiar precio
-                                        nuevoValor = ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
-                                        break;
-                                    case 3: // Cambiar disponibilidad
-                                        nuevoValor = ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
-                                        break;
-                                    case 4: // Cambiar stock
-                                        nuevoValor = ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
-                                        break;
+                                    find.Disponible = true;
+                                    Console.WriteLine(System.Environment.NewLine + "-El producto ahora esta disponible-" + System.Environment.NewLine);
                                 }
-
-                                ModificarProducto(ListaProductos, findModificar, opcionCambiarAtributo, nuevoValor);
-                                Console.WriteLine(System.Environment.NewLine + "-Atributo actualizado con exito-" + System.Environment.NewLine);
+                                else
+                                {
+                                    Console.WriteLine(System.Environment.NewLine + "-El producto se queda indisponible-" + System.Environment.NewLine);
+                                }
                             }
-                            break;
+                        }
 
-                        case 4:
-                            BuscarProducto(ListaProductos, false);
-                            break;
+                        break;// Agregar stock
 
-                        case 5:
-                            ImprimirProductos(ListaProductos);
-                            break;
-                    }
+                    case 3: // Cambiar atributos
+                        var findModificar = BuscarProducto(ListaProductos, true);
+
+                        if (findModificar != null)
+                        {
+                            Console.WriteLine(System.Environment.NewLine + "Elegir un atributo a cambiar:");
+                            Console.WriteLine(" 1. Nombre");
+                            Console.WriteLine(" 2. Precio");
+                            Console.WriteLine(" 3. Disponibilidad");
+                            Console.WriteLine(" 4. Stock");
+
+                            int opcionCambiarAtributo = ValidarEntero(1, 4, "Debe ser uno de los opciones disponibles", "");
+                            string nuevoValor = "";
+
+                            switch (opcionCambiarAtributo)
+                            {
+                                case 1: // Cambiar nombre
+                                    nuevoValor = (string)ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo);
+                                    break;
+                                case 2: // Cambiar precio
+                                    nuevoValor = ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
+                                    break;
+                                case 3: // Cambiar disponibilidad
+                                    nuevoValor = ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
+                                    break;
+                                case 4: // Cambiar stock
+                                    nuevoValor = ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
+                                    break;
+                            }
+
+                            ModificarProducto(ListaProductos, findModificar, opcionCambiarAtributo, nuevoValor);
+                            Console.WriteLine(System.Environment.NewLine + "-Atributo actualizado con exito-" + System.Environment.NewLine);
+                        }
+                        break;// Cambiar atributos
+
+                    case 4: // Buscar producto
+                        BuscarProducto(ListaProductos, false);
+                        break; // Buscar producto
+
+                    case 5: // Listar productos
+                        ImprimirProductos(ListaProductos);
+                        break; // Listar productos
                 }
             }
         }

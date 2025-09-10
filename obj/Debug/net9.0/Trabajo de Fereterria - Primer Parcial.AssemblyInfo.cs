@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Trabajo de Fereterria - Primer Parcial")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+144a23ad3d715997a5a915cb8e756680c5b90f5a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d9170d0e7b1e253062ab62476990fe9839a98fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("Trabajo de Fereterria - Primer Parcial")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trabajo de Fereterria - Primer Parcial")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
