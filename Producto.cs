@@ -15,9 +15,12 @@ namespace Administracion
         public bool Disponible { get; set; }
         public int CantStock { get; set; }
 
+        // Constructor sin parámetros para EF Core
+        public Producto() { }
+
+        // Constructor con parámetros para creacion manual
         public Producto(string nombre)
         {
-            Id = _nextId++;
             Nombre = nombre;
         }
 

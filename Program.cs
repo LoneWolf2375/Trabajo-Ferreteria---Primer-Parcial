@@ -11,8 +11,6 @@ namespace Administracion
     {
         static void Main(string[] strings)
         {
-            List<Producto> ListaProductos = new List<Producto>();
-
             bool exitMainLoop = false;
             while (!exitMainLoop)
             {
@@ -23,7 +21,7 @@ namespace Administracion
                 Console.WriteLine("4. Buscar producto");
                 Console.WriteLine("5. Listar productos");
 
-                int choice = ProductoService.ValidarEntero(0, 6, "Debe ser uno de los opciones disponibles", "");
+                int choice = ProductoMethods.ValidarEntero(0, 6, "Debe ser uno de los opciones disponibles", "");
 
                 switch (choice)
                 {
@@ -33,11 +31,11 @@ namespace Administracion
                         break; // Salir del programa
 
                     case 1: // Anadir un producto
-                        string nombre = ProductoService.GetName(true);
+                        string nombre = ProductoMethods.GetName(true);
 
-                        int precio = ProductoService.ValidarEntero(1000, 999999999, "Debe ser un entero mayor o igual a 1.000 Gs", "Precio");
+                        int precio = ProductoMethods.ValidarEntero(1000, 999999999, "Debe ser un entero mayor o igual a 1.000 Gs", "Precio");
 
-                        bool disponible = ProductoService.GetAvailability(false);
+                        bool disponible = ProductoMethods.GetAvailability(false);
 
                         bool exitSaveLoop = false;
 
@@ -49,13 +47,17 @@ namespace Administracion
                             Console.WriteLine(" Disponible: " + disponible);
 
                             Console.WriteLine(System.Environment.NewLine + "Por favor, confirmar para guardar: ");
-                            bool confirmacionGuardar = ProductoService.ValidarConfirmacion();
+                            bool confirmacionGuardar = ProductoMethods.ValidarConfirmacion();
 
                             if (confirmacionGuardar)
                             {
-                                Producto newProducto = ProductoService.GuardarProducto(nombre, precio, disponible);
+                                Producto newProducto = ProductoMethods.GuardarProducto(nombre, precio, disponible);
 
-                                ListaProductos.Add(newProducto);
+                                using (var db = new ProductoContext())
+                                {
+                                    db.Productos.Add(newProducto);
+                                    db.SaveChanges();
+                                }
 
                                 Console.WriteLine(System.Environment.NewLine + "-Producto guardado con exito-" + System.Environment.NewLine);
 
@@ -70,7 +72,7 @@ namespace Administracion
                                     Console.WriteLine(" 1. Cambiar valor");
                                     Console.WriteLine(" 2. Cancelar");
 
-                                    int opcionNoGuardar = ProductoService.ValidarEntero(1, 2, "Debe ser uno de los opciones disponibles", "");
+                                    int opcionNoGuardar = ProductoMethods.ValidarEntero(1, 2, "Debe ser uno de los opciones disponibles", "");
 
                                     switch (opcionNoGuardar)
                                     {
@@ -80,18 +82,18 @@ namespace Administracion
                                             Console.WriteLine("2. Precio");
                                             Console.WriteLine("3. Disponibilidad");
 
-                                            int opcionCambiar = ProductoService.ValidarEntero(1, 3, "Debe ser uno de los opciones disponibles", "");
+                                            int opcionCambiar = ProductoMethods.ValidarEntero(1, 3, "Debe ser uno de los opciones disponibles", "");
 
                                             switch (opcionCambiar)
                                             {
                                                 case 1:
-                                                    nombre = (string)ProductoService.ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
+                                                    nombre = (string)ProductoMethods.ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
                                                     break;
                                                 case 2:
-                                                    precio = (int)ProductoService.ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
+                                                    precio = (int)ProductoMethods.ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
                                                     break;
                                                 case 3:
-                                                    disponible = (bool)ProductoService.ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
+                                                    disponible = (bool)ProductoMethods.ModificarAtributo(nombre, precio, disponible, 0, opcionCambiar);
                                                     break;
                                             }
 
@@ -110,12 +112,12 @@ namespace Administracion
                         break; // Anadir un producto
 
                     case 2: // Agregar stock
-                        var find = ProductoService.BuscarProducto(ListaProductos, true, true);
+                        var find = ProductoMethods.BuscarProducto(true, true);
 
                         if (find != null)
                         {
                             Console.WriteLine();
-                            int nuevoStock = ProductoService.ValidarEntero(0, 999999999, "Debe ser un entero positivo", "Cantidad a agregar");
+                            int nuevoStock = ProductoMethods.ValidarEntero(0, 999999999, "Debe ser un entero positivo", "Cantidad a agregar");
 
                             find.CantStock += nuevoStock;
 
@@ -124,7 +126,7 @@ namespace Administracion
                             if (find.CantStock > 0 & !find.Disponible)
                             {
                                 Console.WriteLine("El producto no estaba disponible, desea cambiar su estado a disponible?");
-                                bool cambiarEstado = ProductoService.ValidarConfirmacion();
+                                bool cambiarEstado = ProductoMethods.ValidarConfirmacion();
 
                                 if (cambiarEstado)
                                 {
@@ -141,7 +143,7 @@ namespace Administracion
                         break;// Agregar stock
 
                     case 3: // Cambiar atributos
-                        var findModificar = ProductoService.BuscarProducto(ListaProductos, true);
+                        var findModificar = ProductoMethods.BuscarProducto(true);
 
                         if (findModificar != null)
                         {
@@ -151,38 +153,43 @@ namespace Administracion
                             Console.WriteLine(" 3. Disponibilidad");
                             Console.WriteLine(" 4. Stock");
 
-                            int opcionCambiarAtributo = ProductoService.ValidarEntero(1, 4, "Debe ser uno de los opciones disponibles", "");
+                            int opcionCambiarAtributo = ProductoMethods.ValidarEntero(1, 4, "Debe ser uno de los opciones disponibles", "");
                             string nuevoValor = "";
 
                             switch (opcionCambiarAtributo)
                             {
                                 case 1: // Cambiar nombre
-                                    nuevoValor = (string)ProductoService.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo);
+                                    nuevoValor = (string)ProductoMethods.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo);
                                     break;
                                 case 2: // Cambiar precio
-                                    nuevoValor = ProductoService.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
+                                    nuevoValor = ProductoMethods.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
                                     break;
                                 case 3: // Cambiar disponibilidad
-                                    nuevoValor = ProductoService.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
+                                    nuevoValor = ProductoMethods.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
                                     break;
                                 case 4: // Cambiar stock
-                                    nuevoValor = ProductoService.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
+                                    nuevoValor = ProductoMethods.ModificarAtributo(findModificar.Nombre, findModificar.Precio, findModificar.Disponible, findModificar.CantStock, opcionCambiarAtributo).ToString();
                                     break;
                             }
 
-                            ProductoService.ModificarProducto(ListaProductos, findModificar, opcionCambiarAtributo, nuevoValor);
+                            ProductoMethods.ModificarProducto(findModificar, opcionCambiarAtributo, nuevoValor);
                             Console.WriteLine(System.Environment.NewLine + "-Atributo actualizado con exito-" + System.Environment.NewLine);
                         }
                         break;// Cambiar atributos
 
                     case 4: // Buscar producto
-                        ProductoService.BuscarProducto(ListaProductos, false, true);
+                        ProductoMethods.BuscarProducto(false, true);
                         Console.WriteLine();
                         break; // Buscar producto
 
                     case 5: // Listar productos
                         Console.WriteLine();
-                        ProductoService.ImprimirProductos(ListaProductos);
+                        using (var db = new ProductoContext())
+                        {
+                            var productos = db.Productos.ToList();
+                            ProductoMethods.ImprimirProductos(productos);
+                        }
+
                         break; // Listar productos
                 }
             }
