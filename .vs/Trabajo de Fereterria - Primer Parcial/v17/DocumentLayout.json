@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|c:\\users\\lonewofl2375\\onedrive\\documents\\kevin doerksen\\2025\\semester 2\\optativo 3\\parcial 1 - trabajo grupal\\trabajo-ferreteria---primer-parcial\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|solutionrelative:producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|c:\\users\\lonewofl2375\\onedrive\\documents\\kevin doerksen\\2025\\semester 2\\optativo 3\\parcial 1 - trabajo grupal\\trabajo-ferreteria---primer-parcial\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|solutionrelative:appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|c:\\users\\lonewofl2375\\onedrive\\documents\\kevin doerksen\\2025\\semester 2\\optativo 3\\parcial 1 - trabajo grupal\\trabajo-ferreteria---primer-parcial\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|c:\\users\\lonewofl2375\\onedrive\\documents\\kevin doerksen\\2025\\semester 2\\optativo 3\\parcial 1 - trabajo grupal\\trabajo-ferreteria---primer-parcial\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|solutionrelative:classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|c:\\users\\lonewofl2375\\onedrive\\documents\\kevin doerksen\\2025\\semester 2\\optativo 3\\parcial 1 - trabajo grupal\\trabajo-ferreteria---primer-parcial\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42DDC911-0C40-4414-805B-C645ABB6C116}|Trabajo de Fereterria - Primer Parcial.csproj|solutionrelative:productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "AppDbContext.cs",
+              "ToolTip": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\AppDbContext.cs",
+              "RelativeToolTip": "AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T00:17:41.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAALMBAAAAAAAAAAAAADQBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAAK8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-10T03:50:10.086Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "classes.cs",
-              "DocumentMoniker": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\classes.cs",
-              "RelativeDocumentMoniker": "classes.cs",
-              "ToolTip": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\classes.cs",
-              "RelativeToolTip": "classes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ProductoService.cs",
+              "DocumentMoniker": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\ProductoService.cs",
+              "RelativeDocumentMoniker": "ProductoService.cs",
+              "ToolTip": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\ProductoService.cs",
+              "RelativeToolTip": "ProductoService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAOMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T00:05:14.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\Producto.cs",
+              "RelativeDocumentMoniker": "Producto.cs",
+              "ToolTip": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\Producto.cs",
+              "RelativeToolTip": "Producto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-10T04:05:53.84Z",
               "EditorCaption": ""
