@@ -3110,32 +3110,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LoneWofl2375\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\avimo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\Trabajo de Fereterria - Primer Parcial.csproj",
+      "projectUniqueName": "C:\\Users\\avimo\\Desktop\\Optativo-3-Etapa-1\\Trabajo-Ferreteria---Primer-Parcial\\Trabajo de Fereterria - Primer Parcial.csproj",
       "projectName": "Trabajo de Fereterria - Primer Parcial",
-      "projectPath": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\Trabajo de Fereterria - Primer Parcial.csproj",
-      "packagesPath": "C:\\Users\\LoneWofl2375\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LoneWofl2375\\OneDrive\\Documents\\Kevin Doerksen\\2025\\Semester 2\\Optativo 3\\Parcial 1 - Trabajo Grupal\\Trabajo-Ferreteria---Primer-Parcial\\obj\\",
+      "projectPath": "C:\\Users\\avimo\\Desktop\\Optativo-3-Etapa-1\\Trabajo-Ferreteria---Primer-Parcial\\Trabajo de Fereterria - Primer Parcial.csproj",
+      "packagesPath": "C:\\Users\\avimo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\avimo\\Desktop\\Optativo-3-Etapa-1\\Trabajo-Ferreteria---Primer-Parcial\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\LoneWofl2375\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\avimo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
